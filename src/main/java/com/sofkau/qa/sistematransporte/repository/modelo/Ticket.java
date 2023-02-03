@@ -32,10 +32,11 @@ public class Ticket {
     }
 
     public void agregarPasajero(Usuario usuario) {
+
         usuarios.add(usuario);
     }
 
-    public List<Usuario> usuarios() {
+    public List<Usuario> mostrarUsuarios() {
         return usuarios;
     }
 

@@ -1,6 +1,7 @@
 package com.sofkau.qa.sistematransporte.repository.modelo;
 
 public class Persona extends TransporteBus {
+
     private int id;
     private String cc;
     private String nombre;
@@ -8,7 +9,8 @@ public class Persona extends TransporteBus {
     private double telefono;
     private static int contadorPersonas;
 
-    public Persona( String cc, String nombre, String apellido, double telefono, int capacidadBus, String destino) {
+
+    public Persona(String cc, String nombre, String apellido, double telefono, int capacidadBus, String destino) {
         super(capacidadBus,destino);
         this.id = ++Persona.contadorPersonas;
         this.cc = cc;
