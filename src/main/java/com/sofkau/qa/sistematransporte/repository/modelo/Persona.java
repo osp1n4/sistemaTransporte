@@ -1,17 +1,24 @@
 package com.sofkau.qa.sistematransporte.repository.modelo;
 
-public class Persona extends Transporte{
+public class Persona extends TransporteBus {
+    private int id;
     private String cc;
     private String nombre;
     private String apellido;
     private double telefono;
+    private static int contadorPersonas;
 
-    public Persona(String cc, String nombre, String apellido, double telefono,int capacidadBus, String destino) {
+    public Persona( String cc, String nombre, String apellido, double telefono, int capacidadBus, String destino) {
         super(capacidadBus,destino);
+        this.id = ++Persona.contadorPersonas;
         this.cc = cc;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
+    }
+
+    public int id() {
+        return id;
     }
 
     public String cc() {
@@ -20,6 +27,11 @@ public class Persona extends Transporte{
 
     public Persona setCc(String cc) {
         this.cc = cc;
+        return this;
+    }
+
+    public Persona setId(int id) {
+        this.id = id;
         return this;
     }
 
@@ -53,7 +65,8 @@ public class Persona extends Transporte{
     @Override
     public String toString() {
         return "Usuario. " +
-                "\nC.C: " + cc +
+                "\nId Persona: " + id +
+                "\nC.C Persona: " + cc +
                 "\nNombre: " + nombre +
                 "\nApellido: " + apellido +
                 "\nNumero de Celular: " + telefono + super.toString();
