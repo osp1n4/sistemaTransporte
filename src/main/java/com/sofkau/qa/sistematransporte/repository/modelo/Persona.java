@@ -1,26 +1,32 @@
 package com.sofkau.qa.sistematransporte.repository.modelo;
 
-public class Persona extends TransporteBus {
+import java.util.Objects;
 
-    private int id;
+public class Persona {
+
+    private String id;
     private String cc;
     private String nombre;
     private String apellido;
-    private double telefono;
-    private static int contadorPersonas;
+    private String telefono;
 
 
-    public Persona(String cc, String nombre, String apellido, double telefono, int capacidadBus, String destino) {
-        super(capacidadBus,destino);
-        this.id = ++Persona.contadorPersonas;
+
+    public Persona(String id, String cc, String nombre, String apellido, String telefono) {
+        this.id = id;
         this.cc = cc;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
     }
 
-    public int id() {
+    public String id() {
         return id;
+    }
+
+    public Persona setId(String id) {
+        this.id = id;
+        return this;
     }
 
     public String cc() {
@@ -29,11 +35,6 @@ public class Persona extends TransporteBus {
 
     public Persona setCc(String cc) {
         this.cc = cc;
-        return this;
-    }
-
-    public Persona setId(int id) {
-        this.id = id;
         return this;
     }
 
@@ -55,13 +56,26 @@ public class Persona extends TransporteBus {
         return this;
     }
 
-    public double telefono() {
+    public String telefono() {
         return telefono;
     }
 
-    public Persona setTelefono(int telefono) {
+    public Persona setTelefono(String telefono) {
         this.telefono = telefono;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Persona)) return false;
+        Persona persona = (Persona) o;
+        return id.equals(persona.id) && cc.equals(persona.cc) && nombre.equals(persona.nombre) && apellido.equals(persona.apellido);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, cc, nombre, apellido);
     }
 
     @Override
@@ -71,6 +85,6 @@ public class Persona extends TransporteBus {
                 "\nC.C Persona: " + cc +
                 "\nNombre: " + nombre +
                 "\nApellido: " + apellido +
-                "\nNumero de Celular: " + telefono + super.toString();
+                "\nNumero de Celular: " + telefono;
     }
 }

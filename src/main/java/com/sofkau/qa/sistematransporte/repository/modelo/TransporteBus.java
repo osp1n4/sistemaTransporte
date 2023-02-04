@@ -1,20 +1,25 @@
 package com.sofkau.qa.sistematransporte.repository.modelo;
 
+import java.util.Objects;
+
 public class TransporteBus {
-    private  int pasajero;
+    private  String id;
     private String destino;
 
-    public TransporteBus(int pasajero, String destino) {
-        this.pasajero = pasajero;
+    public TransporteBus() {
+    }
+
+    public TransporteBus(String id, String destino) {
+        this.id = id;
         this.destino = destino;
     }
 
-    public int capacidadBus() {
-        return pasajero;
+    public String id() {
+        return id;
     }
 
-    public TransporteBus setPasajero(int pasajero) {
-        this.pasajero = pasajero;
+    public TransporteBus setId(String id) {
+        this.id = id;
         return this;
     }
 
@@ -27,15 +32,22 @@ public class TransporteBus {
         return this;
     }
 
-    public int  sillasVacias(int puesto){
-        puesto = 40;
-        int puestoDisponible =40 - this.pasajero;
-        return puestoDisponible;
-    }
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TransporteBus)) return false;
+        TransporteBus that = (TransporteBus) o;
+        return id.equals(that.id) && destino.equals(that.destino);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, destino);
+    }
+
     public String toString() {
         return "\nTransporteBus terrestre" +
-                "\nCapacidad de usuario en el Bus: " + pasajero +
+                "\n Id: " + id +
                 "\nDestino: " + destino;
     }
 
